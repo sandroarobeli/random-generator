@@ -1,0 +1,278 @@
+<!-- HTML elements -->
+<div 
+     class='flex-container' 
+     style='margin: 0; 
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around; 
+            align-items: center;
+            border-radius:3px;
+            border: 1px solid rgba(0,0,0,0.06);
+            box-shadow:10px 5px 15px 4px rgba(0,0,0,0.06);
+            '
+     >
+     <div 
+         class='row' 
+         style='margin: 0 auto;
+                background: #1c96b5;
+                color: white;
+                font-size: 2.5rem;
+                font-weight: 600;
+                width: 100%;
+                height: 60px;
+                display: flex; 
+                justify-content: space-around;
+                align-items: center;'
+         >
+    	
+            True Random Number Generator
+     </div>
+     <div 
+         class='row' 
+         style='margin: 0 auto;
+                background: white;
+                width: 100%;
+                height: 60px;
+                display: flex; 
+                justify-content: space-around;
+                align-items: center;'
+         >
+    	 <input style='margin: 0 auto;
+                       border: 2px solid #eee;
+                       box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+                       border-radius:5px;
+                       font-size: 2.5rem;
+                       background: #fff;
+                       width: inherit;
+                       height: inherit;
+                       margin: 0 auto;
+                       color: #1c96b5;'
+               	   type='number' 
+               	   name='' 
+                   id='minimum' 
+                   required
+                   placeholder='Minimum integer value' 
+         />
+       
+     </div>
+      <div 
+         class='row' 
+         style='margin: 0 auto;
+                background: white;
+                width: 100%;
+                height: 60px;
+                display: flex; 
+                justify-content: space-around;
+                align-items: center;'
+         >
+    	 <input style='margin: 0 auto;
+                       border: 2px solid #eee;
+                       box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+                       border-radius:5px;
+                       font-size: 2.5rem;
+                       background: #fff;
+                       width: inherit;
+                       height: inherit;
+                       margin: 0 auto;
+                       color: #1c96b5;'
+               	   type='number' 
+               	   name='' 
+                   id='maximum' 
+                   required
+                   placeholder='Maximum integer value' 
+         />
+       
+     </div>
+     <div 
+         class='row' 
+         style='margin: 0 auto;
+                background: white;
+                color: #1c96b5;
+                font-size: 2.5rem;
+                font-weight: 600;
+                width: 100%;
+                height: 60px;
+                display: flex; 
+                justify-content: space-evenly;
+                align-items: center;'
+      >
+       <div>
+             
+                            Binary
+             
+  					  <input 
+                              type="radio" 
+                              id="binary" 
+                              name="base" 	                             						          value="binary" 
+                              style='transform: scale(1.3);
+                                     margin: 0 3px 0 3px;
+                                     vertical-align: middle;'
+                         />
+                             Decimal
+             
+  					  <input 
+                              type="radio" 
+                              id="decimal" 
+                              name="base" 	                             						          value="decimal" 
+                              checked='checked'
+                              style='transform: scale(1.3);
+                                     margin: 0 3px 0 3px; 
+                                     vertical-align: middle;'
+                         />
+                           Hexadecimal
+             
+  					  <input 
+                              type="radio" 
+                              id="hexadecimal" 
+                              name="base" 	                             						          value="hexadecimal" 
+                              style='transform: scale(1.3);
+                                     margin: 0 3px 0 3px; 
+                                     vertical-align: middle;'
+                         />
+  						
+					</div>
+     </div>   
+     <div 
+         class='row' 
+         style='margin: 0 auto;
+                background: white;
+                width: 100%;
+                height: 60px;
+                display: flex; 
+                justify-content: space-around;
+                align-items: center;'
+      >
+        <button 
+               style='background: #1c96b5; 
+                      font-size: 3rem;
+                      width: inherit;
+                      height: inherit;
+                      margin: 0 auto;
+                      font-weight: 600;
+                      border-radius:5px;
+                      color:#fff;'
+                type='button'
+                id='generate'
+                onclick='handleGenerate()'
+        >
+             Generate
+           <audio 
+                  id='generateSound' 			                                               src='https://www.fesliyanstudios.com/play-mp3/6683'
+           />
+        </button>
+    </div>  
+    <div 
+         class='row' 
+         style='margin: 0 auto;
+                background: white;
+                color: #1c96b5;
+                font-size: 3rem;
+                font-weight: 600;
+                width: 100%;
+                height: 60px;
+                display: flex; 
+                justify-content: space-between;
+                align-items: center;'
+      >
+       Result: 
+            <span 
+                  style='padding-right: 10px;
+                         font-size: 3.2rem;
+                         '
+                  id='result'
+            ></span>
+     </div>   
+     <div 
+          class='row' 
+          style='margin: 0 auto; 
+                 width: 100%; 
+                 height: 60px; 
+                 font-size: 3rem;
+                 display: flex; 
+                 justify-content: space-around;
+                 align-items: center;'
+         id='prompter'
+    >
+    </div>
+ </div>
+
+<!--   CSS   -->
+<!-- media accomodates two additional viewport sizes -->
+<style>
+    
+    /* Mobile phones */
+    @media screen and (max-width: 767px){
+       .flex-container {
+          transform: scale(0.60);
+         }
+     }
+    /* Tablets and iPads */
+    @media screen and (min-width: 768px) and (max-width: 1023px){
+       .flex-container {
+          transform: scale(0.8);
+       }
+    }
+</style>
+
+<!--   JS   --->
+<script>
+    // Element declaration
+    const generateButton = document.getElementById('generate');
+    const generateSound = document.getElementById('generateSound');
+    const minimum = document.getElementById('minimum');
+    const maxumum = document.getElementById('maximum');
+    const prompter = document.getElementById('prompter');
+    const resultValue = document.getElementById('result')
+    const binary = document.getElementById('binary')
+    const decimal = document.getElementById('decimal')
+    const hexadecimal = document.getElementById('hexadecimal')
+	
+	
+   // Animation handling
+    const handleActive = (button) => {
+        generateSound.currentTime = 0
+        generateSound.play()
+    	button.style.backgroundColor = '#18809a'
+        button.style.transform = 'scale(0.95)'
+        setTimeout(() => {
+			button.style.backgroundColor = '#1c96b5'
+        	button.style.transform = 'scale(1.0)'
+        	}, 100)
+    }
+    
+  // Reset handling
+   	const handleRestart = () => {
+         minimum.value = "";
+         maximum.value = ""
+   };
+  
+  
+  // Generates a random number within user indicated interval
+   const getRandom = async (min, max, base) => {
+   	  const response = await fetch("https://www.random.org/integers/?num=1&min=" + min + "&max=" + max + "&col=1&base=" + base + "&format=plain&rnd=new")
+      return response.text()
+   } 
+   
+  
+  // Output handling
+    const handleGenerate = () => {
+    	handleActive(generateButton)
+        const base = binary.checked ? 2 : decimal.checked ? 10 : 16
+        if (!minimum.value || !maximum.value) {
+            prompter.style.color = 'red' 
+        	prompter.textContent = "Enter Min & Max values"
+        } else {
+        	getRandom(minimum.value, maximum.value, base).then((data) => {
+        		resultValue.textContent = data
+        		prompter.textContent = ""    
+        	}).catch((error) => {
+        		resultValue.textContent = 'ERROR'
+        		prompter.textContent = 'Connection error. Unable to 						generate';    
+        	})
+       		 handleRestart()
+        }
+        
+   }
+    
+</script>
